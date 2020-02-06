@@ -3,10 +3,10 @@
 <head>
     <title>Bookstore</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
 </head>
 <body>
-	<h1>Add a new Book</h1>
+	<h1 id="otsikko">Add a new Book</h1>
 	<div>
 		<form th:object="${book}" th:action="@{save}" action="#" method="post">
 		  	<label for="name">Book's name</label>

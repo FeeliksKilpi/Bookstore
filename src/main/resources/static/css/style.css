@@ -1,0 +1,42 @@
+#otsikko {
+	padding-left: 50px;
+	font-size: 40px;
+	font-family: Gill Sans, sans-serif;
+	margin: auto;
+}
+#taulukko {
+	margin: 10px;
+	padding: 10px;
+}
+#taulukko td {
+	color: #fff;
+	background-color: #7c7c7c;
+	border: 3px solid #fff;
+  	padding: 12px;
+  	border-radius: 10px;
+  	
+}
+#taulukko td a {
+	color: #b40000;
+	font-family: Gill Sans, sans-serif;
+	
+}
+#taulukko th {
+	font-family: Gill Sans, sans-serif;
+	font-size: 20px;
+	color: #fff;
+	background-color: #dd5223;
+	border: 3px solid #fff;
+	border-radius: 10px;
+	
+}
+#nappi {
+	font-family: Gill Sans, sans-serif;
+	font-size: 20px;
+	color: #fff;
+	padding: 10px;
+	background-color: #dd5223;
+	border: 3px solid #fff;
+	border-radius: 10px;
+	margin-left: 10px;
+}

@@ -3,11 +3,11 @@
 <head>
     <title>Bookstore</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
 </head>
 <body>
-	<h1>Bookstore</h1>
-    <table>
+	<h1 id="otsikko">Bookstore selection</h1>
+    <table id="taulukko">
 		<tr>
 		    <th>Name</th>
 		    <th>Author</th>
@@ -22,6 +22,6 @@
  				<td><a th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>    		
     	</tr>
      </table>
-	 <a href="/add">Add a new Book</a>    	
+	 <a id="nappi" href="/add">Add a new Book</a>    	
 </body>
 </html>
