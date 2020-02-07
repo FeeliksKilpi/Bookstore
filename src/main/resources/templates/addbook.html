@@ -8,20 +8,20 @@
 <body>
 	<h1 id="otsikko">Add a new Book</h1>
 	<div>
-		<form th:object="${book}" th:action="@{save}" action="#" method="post">
-		  	<label for="name">Book's name</label>
+		<form id="kaavake" th:object="${book}" th:action="@{save}" action="#" method="post">
+		  	<label for="name">Book's name:</label>
 			<input type="text" id="name" th:field="*{name}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-		  	<label for="author">Book's author</label>
+		  	<label for="author">Book's author:</label>
 			<input type="text" id="author" th:field="*{author}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-		  	<label for="isbn">ISBN</label>
+		  	<label for="isbn">ISBN:</label>
 			<input type="text" th:field="*{isbn}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="year">Release year</label>
+			<label for="year">Release year:</label>
 			<input type="text" th:field="*{year}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<input type="submit" value="Save"></input>
+			<input id="nappi" type="submit" value="Save"></input>
 		</form>
 	</div>
 </body>
