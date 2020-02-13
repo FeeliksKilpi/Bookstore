@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bookstore</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="css/style.css" th:href="@{css/style.css}" />
+</head>
+<body>
+	<h1 id="otsikko">Modify book's info</h1>
+	<div>
+		<form id="kaavake" th:object="${book}" th:action="@{../save}" action="#" method="post">
+		  	<label for="id"></label>
+		  	<input type="hidden" id="id" th:field="*{id}" readonly="readonly" />
+		  	<label for="name">Book's name:</label>
+			<input type="text" id="name" th:field="*{name}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="author">Book's author:</label>
+			<input type="text" id="author" th:field="*{author}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	<label for="isbn">ISBN:</label>
+			<input type="text" th:field="*{isbn}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="year">Release year:</label>
+			<input type="text" th:field="*{year}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input id="nappi" type="submit" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>

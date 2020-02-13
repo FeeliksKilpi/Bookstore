@@ -30,12 +30,21 @@ public class BookstoreController {
     public String save(Book book){
         repository.save(book);
         return "redirect:bookstore";
-        // Ohjaa tallennuksen jälkeen studentlist endpointtiin
+        // Ohjaa tallennuksen jälkeen bookstore pääsivu endpointtiin
     }    
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String deleteStudent(@PathVariable("id") Long bookId, Model model) {
+    public String deleteBook(@PathVariable("id") Long bookId, Model model) {
     	repository.deleteById(bookId);
+    	//.. tarkoittaa että mennään polussa ylöspäin
         return "redirect:../bookstore";
+    }
+    
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public String editBook(@PathVariable("id") Long bookId, Model model) {
+    	//Haetaan tietokannasta SQL-lauseella kirja, jolla on tämä id
+    	//ja lisätään modeliin
+    	model.addAttribute("book", repository.findById(bookId));
+        return "editbook";
     }  
 }
