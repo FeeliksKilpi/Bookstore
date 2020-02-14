@@ -10,6 +10,9 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.Bookstore.domain.Book;
 import com.example.Bookstore.domain.BookRepository;
+import com.example.Bookstore.domain.Category;
+import com.example.Bookstore.domain.CategoryRepository;
+
 
 
 @SpringBootApplication
@@ -21,16 +24,21 @@ public class BookstoreApplication {
 			
 	}
 	@Bean
-	public CommandLineRunner bookstoreDemo(BookRepository repository) {
+	public CommandLineRunner bookstoreDemo(BookRepository brepository, CategoryRepository crepository) {
 		return (args) -> {
+			
+			crepository.save(new Category("Spanish"));
+			crepository.save(new Category("Culture"));
+			crepository.save(new Category("Sci-fi"));
+			
 			log.info("save a couple of books"); //logger tuottaa lokia ohjelman toiminnasta
-			repository.save(new Book("Buenas Migas 1", "Otava", "978-951-1-34784-2", 2014));
-			repository.save(new Book("Star Trek - Nemesis", "Pocket Books", "0-7434-7866-5", 2002));
-			repository.save(new Book("Paris Pop Up", "Editions Des Grandes Personnes", "978-2-36193-405-7", 2015));
+			brepository.save(new Book("Buenas Migas 1", "Otava", "978-951-1-34784-2", 2014, crepository.findByName("Spanish").get(0)));
+			brepository.save(new Book("Star Trek - Nemesis", "Pocket Books", "0-7434-7866-5", 2002, crepository.findByName("Sci-fi").get(0)));
+			brepository.save(new Book("Paris Pop Up", "Editions Des Grandes Personnes", "978-2-36193-405-7", 2015, crepository.findByName("Culture").get(0)));
 			//repository.deleteAll(); //Poistaa kaikki kirjat mikäli niin halutaan
 			
 			log.info("fetch all books");
-			for (Book book : repository.findAll()) {
+			for (Book book : brepository.findAll()) {
 				log.info(book.toString());
 			}
 

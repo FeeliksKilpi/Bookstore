@@ -3,8 +3,8 @@ package com.example.Bookstore.domain;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
-public interface BookRepository extends CrudRepository<Book, Long> {
+public interface CategoryRepository extends CrudRepository<Category, Long> {
 
-    List<Book> findByName(String name);
+    List<Category> findByName(String categoryName);
     
 }

@@ -22,8 +22,14 @@
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<label for="year">Release year:</label>
 			<input type="text" th:field="*{year}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
+			<div style="clear: both; display: block; height: 10px;"></div>	
 			<input id="nappi" type="submit" value="Save"></input>
+			<label for="categorylist">Category:</label>
+			<select id="categorylist" th:field="*{category}" class="form-control">
+			<option th:each="category: ${categories}"
+					th:value="${category.categoryId}"
+					th:text="${category.name}"></option>
+			</select>
 		</form>
 	</div>
 </body>

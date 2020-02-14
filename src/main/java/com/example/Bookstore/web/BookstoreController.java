@@ -9,33 +9,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.Bookstore.domain.Book;
 import com.example.Bookstore.domain.BookRepository;
+import com.example.Bookstore.domain.CategoryRepository;
 
 @Controller
 public class BookstoreController {
 	@Autowired
-	private BookRepository repository;
+	private BookRepository brepository;
+	@Autowired
+	private CategoryRepository crepository;
 	
 	@RequestMapping(value= {"/", "/bookstore"})
     public String studentList(Model model) {	
-        model.addAttribute("books", repository.findAll());
+        model.addAttribute("books", brepository.findAll());
         return "bookstore";
     }
 	@RequestMapping(value = "/add")
     public String addStudent(Model model){
     	model.addAttribute("book", new Book());
+    	model.addAttribute("categories", crepository.findAll());
         return "addbook";
     } 
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(Book book){
-        repository.save(book);
+        brepository.save(book);
         return "redirect:bookstore";
         // Ohjaa tallennuksen jälkeen bookstore pääsivu endpointtiin
     }    
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteBook(@PathVariable("id") Long bookId, Model model) {
-    	repository.deleteById(bookId);
+    	brepository.deleteById(bookId);
     	//.. tarkoittaa että mennään polussa ylöspäin
         return "redirect:../bookstore";
     }
@@ -44,7 +48,8 @@ public class BookstoreController {
     public String editBook(@PathVariable("id") Long bookId, Model model) {
     	//Haetaan tietokannasta SQL-lauseella kirja, jolla on tämä id
     	//ja lisätään modeliin
-    	model.addAttribute("book", repository.findById(bookId));
+    	model.addAttribute("book", brepository.findById(bookId));
+    	model.addAttribute("categories", crepository.findAll());
         return "editbook";
     }  
 }
