@@ -1,7 +1,7 @@
 #otsikko {
 	padding-left: 50px;
-	font-size: 40px;
-	font-family: Gill Sans, sans-serif;
+	font-size: 80px;
+	font-family: 'Galada', cursive;
 	margin: auto;
 }
 #taulukko {
@@ -25,6 +25,7 @@
 	font-family: Gill Sans, sans-serif;
 	font-size: 20px;
 	color: #fff;
+	padding: 8px;
 	background-color: #dd5223;
 	border: 3px solid #fff;
 	border-radius: 10px;
@@ -33,7 +34,7 @@
 #kaavake {
 	color: #fff;
 	background-color: #7c7c7c;
-	border: 3px solid #fff;
+	border: 3px solid #dd5223;
   	padding: 12px;
   	border-radius: 10px;
   	width: 30%;
@@ -54,7 +55,7 @@
 	color: #fff;
 	padding: 10px;
 	background-color: #dd5223;
-	border: 3px solid #fff;
+	border: 1px solid #fff;
 	border-radius: 10px;
-	margin-left: 10px;
+	margin-left: 22px;
 }
