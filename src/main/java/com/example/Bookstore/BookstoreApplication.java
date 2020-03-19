@@ -12,6 +12,8 @@ import com.example.Bookstore.domain.Book;
 import com.example.Bookstore.domain.BookRepository;
 import com.example.Bookstore.domain.Category;
 import com.example.Bookstore.domain.CategoryRepository;
+import com.example.Bookstore.domain.User;
+import com.example.Bookstore.domain.UserRepository;
 
 
 
@@ -24,7 +26,7 @@ public class BookstoreApplication {
 			
 	}
 	@Bean
-	public CommandLineRunner bookstoreDemo(BookRepository brepository, CategoryRepository crepository) {
+	public CommandLineRunner bookstoreDemo(BookRepository brepository, CategoryRepository crepository, UserRepository urepository) {
 		return (args) -> {
 			
 			crepository.save(new Category("Spanish"));
@@ -39,6 +41,15 @@ public class BookstoreApplication {
 			brepository.save(new Book("WTF - Welcome to Finland", "FinnLit", "19-999-0-222", 2018, crepository.findByName("Culture").get(0)));
 			brepository.save(new Book("Moon mission", "Storyland", "245-0-1-123-321", 1975, crepository.findByName("Sci-fi").get(0)));
 			//repository.deleteAll(); //Poistaa kaikki kirjat mikäli niin halutaan
+			
+			// Create users: admin/admin user/user
+			User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
+			User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
+			// Luo user käyttäjä käyttäen bcrypt kryptausjuttua
+			User user3 = new User("felix", "$2a$09$5I3aVz.7cAf/I5KKq9to.OkEb3haIiZQDXieNXv.C0qgnTveZ0kWi", "ADMIN");
+			urepository.save(user1);
+			urepository.save(user2);
+			urepository.save(user3);
 			
 			log.info("fetch all books");
 			for (Book book : brepository.findAll()) {

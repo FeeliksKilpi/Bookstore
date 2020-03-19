@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Bookstore</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="..css/style.css" th:href="@{..css/style.css}" />
+    <link href="https://fonts.googleapis.com/css?family=Galada&display=swap" rel="stylesheet">
+</head>
+<body>
+	<h1 id="otsikko">Bookstore selection</h1>
+	<div>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" id="nappi"/>
+		</form>
+	</div>
+		<h2>Sorry, you do not have permission to view this page.</h2>
+ 
+		Click <a id="nappi" href="/bookstore">here</a>
+		to go back to the Homepage.
+</body>
+</html>

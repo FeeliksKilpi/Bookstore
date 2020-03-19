@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,13 @@ public class BookstoreController {
 	private BookRepository brepository;
 	@Autowired
 	private CategoryRepository crepository;
+	
+	// Show all students
+    @RequestMapping(value="/login")
+    public String login() {	
+        return "login";
+    }
+    
 	
 	@RequestMapping(value= {"/", "/bookstore"})
     public String studentList(Model model) {	
@@ -52,8 +60,9 @@ public class BookstoreController {
         brepository.save(book);
         return "redirect:bookstore";
         // Ohjaa tallennuksen jälkeen bookstore pääsivu endpointtiin
-    }    
-
+    }
+	
+	@PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteBook(@PathVariable("id") Long bookId, Model model) {
     	brepository.deleteById(bookId);
@@ -61,6 +70,7 @@ public class BookstoreController {
         return "redirect:../bookstore";
     }
     
+	@PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String editBook(@PathVariable("id") Long bookId, Model model) {
     	//Haetaan tietokannasta SQL-lauseella kirja, jolla on tämä id
