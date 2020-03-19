@@ -22,15 +22,15 @@ public class BookRepositoryTest {
 
     @Test
     public void findByNameShouldReturnBook() {
-        List<Book> books = brepository.findByName("TestiKirja");
+        List<Book> books = brepository.findByName("Buenas Migas 1");
         
         assertThat(books).hasSize(1);
-        assertThat(books.get(0).getName()).isEqualTo("TestiKirja");
+        assertThat(books.get(0).getName()).isEqualTo("Buenas Migas 1");
     }
     
     @Test
     public void createNewBook() {
-    	Book book = new Book("TestiKirja", "TestiAuthor", "1919191919-1919", 2000,  new Category("Testauskirjat"));
+    	Book book = new Book("Testi", "TestiAuthor", "1919191919-1919", 2000,  new Category("Testauskirjat"));
     	brepository.save(book);
     	assertThat(book.getId()).isNotNull();
     }    
