@@ -16,8 +16,6 @@ import com.example.Bookstore.domain.Book;
 import com.example.Bookstore.domain.BookRepository;
 import com.example.Bookstore.domain.CategoryRepository;
 
-
-
 @Controller
 public class BookstoreController {
 	@Autowired
@@ -29,8 +27,7 @@ public class BookstoreController {
     @RequestMapping(value="/login")
     public String login() {	
         return "login";
-    }
-    
+    }  
 	
 	@RequestMapping(value= {"/", "/bookstore"})
     public String studentList(Model model) {	
